@@ -1,0 +1,475 @@
+/* --- Couleurs & Typographie --- */
+:root {
+    --color-primary: #333; /* Noir/Gris foncé pour le texte principal */
+    --color-secondary: #008080; /* Une couleur teal/turquoise pour les accents (nature/spa) */
+    --color-background: #f4f4f4; /* Fond clair */
+    --color-light: #fffdf9; /* Blanc cassé pour les éléments de luxe */
+    --color-accent: #b8860b; /* Or/Cuivre pour rappeler les robinetteries */
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: var(--color-background);
+    color: var(--color-primary);
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-primary);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Navigation & En-tête --- */
+.main-header {
+    background-color: var(--color-light);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 900;
+    color: var(--color-primary);
+}
+
+.logo span {
+    font-weight: 300;
+    font-size: 0.8em;
+    display: block;
+    line-height: 1;
+    color: var(--color-secondary);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--color-primary);
+    padding: 10px 15px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--color-secondary);
+}
+
+.cta-button {
+    background-color: var(--color-secondary);
+    color: white !important;
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin-left: 20px;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #006666; /* Variation de la couleur secondaire */
+}
+
+/* --- Styles des Boutons d'Action --- */
+.cta-primary {
+    display: inline-block;
+    background-color: var(--color-secondary);
+    color: white !important;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 20px;
+}
+
+.cta-primary:hover {
+    background-color: #006666;
+    transform: translateY(-2px);
+}
+
+.cta-primary.large {
+    font-size: 1.2em;
+    padding: 20px 40px;
+}
+
+/* --- Section Héro --- */
+.hero-section {
+    /* ⚠️ ATTENTION : Utilisation de .jpeg */
+    background: url('salon_terrasse.jpeg') center center/cover no-repeat; 
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    padding: 100px 20px;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Overlay sombre pour la lisibilité */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 0.5em;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.3em;
+    color: #f0f0f0;
+}
+
+/* --- Sections Générales --- */
+section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+    position: relative;
+    display: inline-block;
+}
+
+section h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: var(--color-secondary);
+    margin: 10px auto 0;
+}
+
+/* --- Section Caractéristiques (L'Appartement) --- */
+.description-section {
+    background-color: var(--color-light);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.features-grid > div {
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.features-grid h3 {
+    color: var(--color-accent);
+    margin-top: 10px;
+    font-size: 1.4em;
+}
+
+.material-icons {
+    font-size: 2.5em;
+    color: var(--color-secondary);
+}
+
+/* --- Section Bien-être & Spa --- */
+.spa-section {
+    background-color: #33383d; /* Fond sombre pour le luxe/l'ambiance spa */
+    color: white;
+}
+
+.spa-section h2, .spa-section h3 {
+    color: white;
+}
+
+.spa-features-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.spa-features-grid > div {
+    flex: 1;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    max-width: 500px;
+    text-align: left;
+}
+
+.spa-features-grid .material-icons {
+    color: var(--color-accent);
+    margin-right: 10px;
+}
+
+/* --- Section Galerie --- */
+.gallery-section {
+    background-color: var(--color-background);
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+.gallery-item {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Assure que l'image couvre l'espace sans être déformée */
+    display: block;
+    transition: transform 0.3s;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05); /* Petit effet de zoom au survol pour un look moderne */
+}
+
+/* --- Section Localisation --- */
+.location-section {
+    text-align: left;
+    background-color: var(--color-light);
+}
+
+.main-location-text {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.amenities-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.amenities-list span {
+    background-color: var(--color-secondary);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.amenities-list .material-icons {
+    color: white;
+    font-size: 1.2em;
+    margin-right: 5px;
+}
+
+.nearby-list h3 {
+    color: var(--color-secondary);
+    margin-top: 30px;
+}
+
+/* --- Section CTA (Réservation) --- */
+.cta-section {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 100px 20px;
+}
+
+.cta-section h2 {
+    color: white;
+}
+
+/* --- Styles pour la nouvelle section de Réservation --- */
+.reservation-box {
+    background-color: var(--color-light); /* Fond clair sur la section sombre */
+    color: var(--color-primary);
+    padding: 40px;
+    border-radius: 10px;
+    margin-top: 40px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.reservation-box h3 {
+    font-size: 1.8em;
+    color: var(--color-secondary);
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.reservation-box p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.calendar-integration-area {
+    min-height: 200px; /* Simuler l'espace du widget */
+    padding: 20px;
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.cta-secondary {
+    display: inline-block;
+    background-color: var(--color-accent); /* Couleur Cuivrée */
+    color: white !important;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+.cta-secondary:hover {
+    background-color: #a0740a;
+}
+
+/* --- Section Avis Google --- */
+.reviews-section {
+    background-color: var(--color-background);
+    padding: 60px 0;
+}
+
+.cta-google {
+    display: inline-flex;
+    align-items: center;
+    background-color: #4285F4; /* Bleu Google */
+    color: white !important;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.cta-google:hover {
+    background-color: #357ae8;
+}
+
+.cta-google .material-icons {
+    color: white;
+    font-size: 1.3em;
+    margin-right: 8px;
+}
+
+/* --- Rendre le site responsive (pour téléphones) --- */
+@media (max-width: 768px) {
+    /* 1. Navigation et En-tête */
+    .main-header {
+        flex-direction: column;
+        padding: 10px 15px;
+    }
+    nav ul {
+        flex-direction: column; /* Les liens passent en colonne */
+        align-items: center;
+        margin-top: 5px;
+    }
+    nav li {
+        margin: 5px 0;
+    }
+    .cta-button {
+        margin-left: 0;
+        margin-top: 10px;
+        padding: 6px 12px;
+    }
+
+    /* 2. Section Héro */
+    .hero-content h1 {
+        font-size: 2.2em; /* Réduction de la taille du titre */
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    /* 3. Sections Générales */
+    section {
+        padding: 40px 0; /* Réduction du padding pour gagner de la place */
+    }
+    section h2 {
+        font-size: 1.8em;
+    }
+
+    /* 4. Bien-être & Spa */
+    .spa-features-grid {
+        flex-direction: column; /* Les deux colonnes passent l'une sous l'autre */
+        gap: 20px;
+        align-items: center;
+    }
+    .spa-features-grid > div {
+        max-width: 90%;
+        text-align: center;
+    }
+
+    /* 5. Galerie d'Images */
+    .image-grid {
+        /* On passe la grille de 4 colonnes à 2 colonnes par défaut sur mobile */
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+    }
+
+    /* 6. Localisation & Commodités */
+    .location-section {
+        text-align: center;
+    }
+    .amenities-list {
+        justify-content: center;
+        gap: 10px;
+        font-size: 0.9em;
+    }
+    .amenities-list span {
+        padding: 6px 10px;
+    }
+
+    /* 7. Réservation et CTA */
+    .cta-primary.large, .cta-secondary {
+        font-size: 1em;
+        padding: 12px 25px;
+    }
+    .reservation-box {
+        padding: 20px;
+    }
+    
+    /* 8. Pied de page */
+    footer p {
+        font-size: 0.8em;
+    }
+}
