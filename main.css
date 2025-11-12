@@ -1,29 +1,14 @@
-/* --- Couleurs & Typographie --- */
-:root {
-    --color-primary: #333; /* Noir/Gris foncé pour le texte principal */
-    --color-secondary: #008080; /* Une couleur teal/turquoise pour les accents (nature/spa) */
-    --color-background: #f4f4f4; /* Fond clair */
-    --color-light: #fffdf9; /* Blanc cassé pour les éléments de luxe */
-    --color-accent: #b8860b; /* Or/Cuivre pour rappeler les robinetteries */
-}
+/* ==================================== */
+/* Styles Généraux */
+/* ==================================== */
 
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f7f7f7;
+    color: #333;
     line-height: 1.6;
-    background-color: var(--color-background);
-    color: var(--color-primary);
-}
-
-h1, h2, h3 {
-    font-weight: 700;
-    line-height: 1.2;
-    color: var(--color-primary);
-}
-
-strong {
-    font-weight: 900;
 }
 
 .container {
@@ -32,82 +17,111 @@ strong {
     padding: 0 20px;
 }
 
-/* --- Navigation & En-tête --- */
+h1, h2, h3 {
+    font-family: 'Georgia', serif;
+    color: #004d40; /* Vert foncé/Émeraude */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    padding-top: 50px;
+}
+
+h3 {
+    color: #004d40;
+}
+
+section {
+    padding: 40px 0;
+}
+
+strong {
+    font-weight: bold;
+    color: #004d40;
+}
+
+/* Soulignement stylisé sous les titres de section */
+.description-section h2::after, 
+.kitchen-section h2::after,
+.spa-section h2::after,
+.gallery-section h2::after,
+.location-section h2::after,
+.reviews-section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #009688; /* Vert plus clair */
+    margin: 10px auto 30px;
+}
+
+/* ==================================== */
+/* Header et Navigation */
+/* ==================================== */
+
 .main-header {
-    background-color: var(--color-light);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    padding: 15px 40px;
+    background-color: #ffffff;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 99;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    padding: 10px 20px;
 }
 
 .logo-img {
-    height: 50px; /* Hauteur du logo image */
-    width: auto;
-    display: block;
+    height: 40px; 
 }
 
 nav ul {
     list-style: none;
-    display: flex;
     margin: 0;
     padding: 0;
+    display: flex;
+    align-items: center;
 }
 
-nav a {
-    text-decoration: none;
-    color: var(--color-primary);
-    padding: 10px 15px;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: var(--color-secondary);
-}
-
-.cta-button {
-    background-color: var(--color-secondary);
-    color: white !important;
-    border-radius: 5px;
-    padding: 8px 15px;
+nav ul li {
     margin-left: 20px;
-    transition: background-color 0.3s;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+    padding: 8px 10px;
+}
+
+nav ul li a:hover {
+    color: #009688;
+}
+
+/* Style du bouton Réserver dans la nav */
+.cta-button {
+    background-color: #009688;
+    color: white !important;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .cta-button:hover {
-    background-color: #006666; /* Variation de la couleur secondaire */
-}
-
-/* --- Styles des Boutons d'Action --- */
-.cta-primary {
-    display: inline-block;
-    background-color: var(--color-secondary);
+    background-color: #00695c;
     color: white !important;
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.2s;
-    margin-top: 20px;
 }
 
-.cta-primary:hover {
-    background-color: #006666;
-    transform: translateY(-2px);
-}
+/* ==================================== */
+/* Section Héro */
+/* ==================================== */
 
-.cta-primary.large {
-    font-size: 1.2em;
-    padding: 20px 40px;
-}
-
-/* --- Section Héro (Retour au mur avec logo) --- */
 .hero-section {
-    /* Base de la section HERO */
+    /* Suppression de l'image de fond générale, elle est gérée par la classe .elysia-wall-bg */
     min-height: 70vh;
     display: flex;
     align-items: center;
@@ -118,13 +132,12 @@ nav a:hover {
     padding: 100px 20px;
 }
 
-/* FOND DU MUR ELYSIA (s'applique uniquement si la classe est présente dans le HTML) */
+/* FOND DE MUR ACTIVÉ */
 .elysia-wall-bg {
-    /* Assurez-vous d'avoir téléchargé l'image nommée 'mur_elysia_bg.jpg' */
     background: url('mur_elysia_bg.jpg') center center/cover no-repeat;
 }
 
-
+/* Overlay pour la lisibilité du texte */
 .hero-section::before {
     content: '';
     position: absolute;
@@ -132,258 +145,245 @@ nav a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.45); /* Overlay sombre pour la lisibilité */
+    background: rgba(0, 0, 0, 0.45); 
+    z-index: 1;
 }
 
 .hero-content {
     position: relative;
-    z-index: 10;
+    z-index: 2;
     max-width: 800px;
 }
 
 .hero-content h1 {
-    font-size: 3.5em;
-    margin-bottom: 0.5em;
+    font-size: 3em;
     color: white;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
 }
 
 .hero-content p {
-    font-size: 1.3em;
-    color: #f0f0f0;
+    font-size: 1.2em;
+    margin-bottom: 30px;
 }
 
-/* --- Sections Générales --- */
-section {
-    padding: 80px 0;
-    text-align: center;
-}
-
-section h2 {
-    font-size: 2.5em;
-    margin-bottom: 1em;
-    position: relative;
+.cta-primary {
     display: inline-block;
+    background-color: #009688;
+    color: white !important;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
 }
 
-section h2::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 3px;
-    background-color: var(--color-secondary);
-    margin: 10px auto 0;
+.cta-primary:hover {
+    background-color: #00695c;
 }
 
-/* --- Section Caractéristiques (L'Appartement, Kitchenette, Équipements) --- */
-.description-section {
-    background-color: var(--color-light);
+.cta-primary.large {
+    padding: 15px 30px;
+    font-size: 1.1em;
 }
+
+/* ==================================== */
+/* Sections Caractéristiques et Services */
+/* ==================================== */
 
 .features-grid {
     display: grid;
-    /* 4 colonnes sur desktop, minimum 250px par colonne (pour les 4 vignettes de l'appart) */
+    /* 4 colonnes pour les grands écrans, s'adapte à 1 ou 2 sur les petits */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
     margin-top: 40px;
+    text-align: center;
 }
 
 .features-grid > div {
-    /* VIGNETTE STYLE UNIFIÉ */
-    padding: 30px;
-    background: white;
-    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s;
 }
 
 .features-grid > div:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.features-grid .material-icons {
+    font-size: 40px;
+    color: #009688;
+    margin-bottom: 15px;
 }
 
 .features-grid h3 {
-    color: var(--color-accent);
-    margin-top: 10px;
-    font-size: 1.4em;
+    margin-top: 0;
 }
 
-.material-icons {
-    font-size: 2.5em;
-    color: var(--color-secondary);
+/* Style des commodités (Amenities) dans la section Localisation */
+.amenities-section .features-grid > div {
+    background-color: #e0f2f1; /* Fond plus clair pour différencier */
+    padding: 15px;
 }
 
-/* --- Ancienne Section Kitchenette (maintenant masquée) --- */
-.kitchen-section {
-    display: none; 
-}
+/* ==================================== */
+/* Section Spa / Bien-être */
+/* ==================================== */
 
-.offers {
-    /* Ce style n'est plus utilisé puisque la section est masquée */
-    display: none; 
-}
-/* --- Fin Ancienne Section Kitchenette --- */
-
-/* --- Section Bien-être & Spa --- */
 .spa-section {
-    background-color: #33383d; 
-    color: white;
-}
-
-.spa-section h2, .spa-section h3, .spa-section strong {
-    color: white;
+    background-color: #fff8e1; /* Fond crème très clair */
 }
 
 .spa-features-grid {
-    display: flex;
-    justify-content: space-around;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
     margin-top: 40px;
+    text-align: center;
 }
 
 .spa-features-grid > div {
-    flex: 1;
+    background-color: white;
     padding: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    max-width: 500px;
-    text-align: left;
+    border: 1px solid #ffecb3;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .spa-features-grid .material-icons {
-    color: var(--color-accent);
-    margin-right: 10px;
+    font-size: 30px;
+    color: #004d40;
+    vertical-align: middle;
+    margin-right: 5px;
 }
 
-/* --- Section Galerie --- */
+/* ==================================== */
+/* Galerie Photo */
+/* ==================================== */
+
 .gallery-section {
-    background-color: var(--color-background);
+    background-color: white;
 }
 
 .image-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 15px;
-    margin-top: 40px;
-    padding: 0 20px;
-}
-
-.gallery-item {
-    border-radius: 8px;
-    overflow: hidden;
+    margin-top: 30px;
 }
 
 .gallery-item img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    display: block;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer; /* Indique qu'on peut cliquer */
     transition: transform 0.3s;
 }
 
 .gallery-item img:hover {
-    transform: scale(1.05); 
+    transform: scale(1.02);
 }
 
-/* --- Section Commodités du Complexe --- */
-.amenities-section {
-    padding: 60px 0;
-    background-color: #ececec; 
-    text-align: center;
-}
+/* ==================================== */
+/* Section Localisation */
+/* ==================================== */
 
-/* --- Section Localisation --- */
 .location-section {
-    text-align: left;
-    background-color: var(--color-light);
+    background-color: #f7f7f7;
+    text-align: center;
 }
 
 .main-location-text {
     font-size: 1.1em;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nearby-list {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+    display: inline-block;
+    text-align: left;
 }
 
 .nearby-list h3 {
-    color: var(--color-secondary);
-    margin-top: 30px;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
-/* --- Section CTA (Réservation) --- */
+.location-section .material-icons {
+    color: #009688;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* ==================================== */
+/* Section CTA / Réservation */
+/* ==================================== */
+
 .cta-section {
-    background-color: var(--color-primary);
+    background-color: #004d40; 
     color: white;
-    padding: 100px 20px;
+    text-align: center;
 }
 
 .cta-section h2 {
     color: white;
 }
 
-/* --- Styles pour la nouvelle section de Réservation --- */
 .reservation-box {
-    background-color: var(--color-light); 
-    color: var(--color-primary);
-    padding: 40px;
-    border-radius: 10px;
-    margin-top: 40px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: #00695c;
+    padding: 30px;
+    border-radius: 8px;
+    margin-top: 30px;
 }
 
 .reservation-box h3 {
-    font-size: 1.8em;
-    color: var(--color-secondary);
-    margin-top: 30px;
-    margin-bottom: 15px;
-}
-
-.reservation-box p {
-    font-size: 1.1em;
-    margin-bottom: 30px;
-}
-
-.calendar-integration-area {
-    min-height: 200px; 
-    padding: 20px;
-    border: 2px dashed #ccc;
-    border-radius: 5px;
-    margin-bottom: 30px;
+    color: #ffeb3b; /* Jaune/Or pour mettre en avant */
+    margin-top: 0;
 }
 
 .cta-secondary {
     display: inline-block;
-    background-color: var(--color-accent); 
-    color: white !important;
-    padding: 15px 30px;
-    text-decoration: none;
+    background-color: white;
+    color: #004d40;
+    padding: 10px 20px;
     border-radius: 5px;
+    text-decoration: none;
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: opacity 0.3s;
     margin-top: 15px;
 }
 
 .cta-secondary:hover {
-    background-color: #a0740a;
+    opacity: 0.9;
 }
 
-/* --- Section Avis Google --- */
+/* ==================================== */
+/* Section Avis */
+/* ==================================== */
+
 .reviews-section {
-    background-color: var(--color-background);
-    padding: 60px 0;
+    background-color: white;
+    text-align: center;
 }
 
 .cta-google {
-    display: inline-flex;
-    align-items: center;
-    background-color: #4285F4; 
+    display: inline-block;
+    background-color: #4285f4; /* Bleu Google */
     color: white !important;
-    padding: 12px 25px;
-    text-decoration: none;
+    padding: 10px 20px;
     border-radius: 5px;
+    text-decoration: none;
     font-weight: bold;
-    font-size: 1.1em;
-    margin-top: 20px;
     transition: background-color 0.3s;
+    margin-top: 20px;
 }
 
 .cta-google:hover {
@@ -391,81 +391,102 @@ section h2::after {
 }
 
 .cta-google .material-icons {
-    color: white;
-    font-size: 1.3em;
-    margin-right: 8px;
+    vertical-align: middle;
+    margin-right: 5px;
 }
 
-/* --- Rendre le site responsive (pour téléphones) --- */
-@media (max-width: 768px) {
-    /* 1. Navigation et En-tête */
+/* ==================================== */
+/* Footer */
+/* ==================================== */
+
+footer {
+    background-color: #222;
+    color: #ccc;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #009688;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ==================================== */
+/* Styles pour la Modale/Lightbox (Galerie) */
+/* ==================================== */
+
+/* Conteneur de la modale (initialement caché) */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    padding-top: 60px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.9); 
+}
+
+/* Contenu de la modale (l'image agrandie) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%; 
+    max-width: 1200px; 
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+/* Bouton de fermeture (la croix) */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Animation d'ouverture (simple zoom) */
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* Ajustement pour les petits écrans */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+    .hero-content h1 {
+        font-size: 2.2em;
+    }
     .main-header {
         flex-direction: column;
-        padding: 10px 15px;
     }
     nav ul {
-        flex-direction: column; 
-        align-items: center;
-        margin-top: 5px;
+        justify-content: center;
+        padding-top: 10px;
     }
-    nav li {
-        margin: 5px 0;
-    }
-    .cta-button {
-        margin-left: 0;
-        margin-top: 10px;
-        padding: 6px 12px;
-    }
-
-    /* 2. Section Héro */
-    .hero-content h1 {
-        font-size: 2.2em; 
-    }
-    .hero-content p {
-        font-size: 1em;
-    }
-
-    /* 3. Sections Générales */
-    section {
-        padding: 40px 0; 
-    }
-    section h2 {
-        font-size: 1.8em;
-    }
-
-    /* 4. Bien-être & Spa */
-    .spa-features-grid {
-        flex-direction: column; 
-        gap: 20px;
-        align-items: center;
-    }
-    .spa-features-grid > div {
-        max-width: 90%;
-        text-align: center;
-    }
-
-    /* 5. Galerie d'Images */
-    .image-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 10px;
-    }
-
-    /* 6. Localisation & Commodités */
-    .location-section {
-        text-align: center;
-    }
-    
-    /* 7. Réservation et CTA */
-    .cta-primary.large, .cta-secondary {
-        font-size: 1em;
-        padding: 12px 25px;
-    }
-    .reservation-box {
-        padding: 20px;
-    }
-    
-    /* 8. Pied de page */
-    footer p {
-        font-size: 0.8em;
+    nav ul li {
+        margin-left: 10px;
+        margin-right: 10px;
     }
 }
