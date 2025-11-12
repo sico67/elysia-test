@@ -41,18 +41,10 @@ h1, h2, h3 {
     z-index: 1000;
 }
 
-.logo {
-    font-size: 1.8em;
-    font-weight: 900;
-    color: var(--color-primary);
-}
-
-.logo span {
-    font-weight: 300;
-    font-size: 0.8em;
+.logo-img {
+    height: 50px; /* Hauteur du logo image */
+    width: auto;
     display: block;
-    line-height: 1;
-    color: var(--color-secondary);
 }
 
 nav ul {
@@ -111,8 +103,7 @@ nav a:hover {
 
 /* --- Section Héro --- */
 .hero-section {
-    /* ⚠️ ATTENTION : Utilisation de .jpeg */
-    background: url('salon_terrasse.jpeg') center center/cover no-repeat; 
+    background: url('salon_terrasse.jpg') center center/cover no-repeat; 
     min-height: 70vh;
     display: flex;
     align-items: center;
@@ -201,6 +192,52 @@ section h2::after {
 .material-icons {
     font-size: 2.5em;
     color: var(--color-secondary);
+}
+
+/* --- Section Kitchenette --- */
+.kitchen-section {
+    background-color: #ffffff; 
+    padding: 60px 0;
+    text-align: center;
+}
+
+.kitchen-details {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px auto;
+    max-width: 900px;
+    flex-wrap: wrap;
+}
+
+.kitchen-details p {
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.kitchen-details .material-icons {
+    color: var(--color-accent); /* Couleur Cuivrée */
+    margin-right: 8px;
+    font-size: 1.5em;
+}
+
+.offers {
+    margin-top: 30px;
+    padding: 15px 30px;
+    background-color: #e0f2f1; /* Fond très clair et agréable */
+    color: var(--color-secondary);
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.offers .material-icons {
+    color: var(--color-secondary);
+    margin-right: 10px;
+    font-size: 1.8em;
 }
 
 /* --- Section Bien-être & Spa --- */
@@ -439,14 +476,20 @@ section h2::after {
         text-align: center;
     }
 
-    /* 5. Galerie d'Images */
+    /* 5. Kitchenette */
+    .kitchen-details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* 6. Galerie d'Images */
     .image-grid {
         /* On passe la grille de 4 colonnes à 2 colonnes par défaut sur mobile */
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 10px;
     }
 
-    /* 6. Localisation & Commodités */
+    /* 7. Localisation & Commodités */
     .location-section {
         text-align: center;
     }
@@ -459,7 +502,7 @@ section h2::after {
         padding: 6px 10px;
     }
 
-    /* 7. Réservation et CTA */
+    /* 8. Réservation et CTA */
     .cta-primary.large, .cta-secondary {
         font-size: 1em;
         padding: 12px 25px;
@@ -468,7 +511,7 @@ section h2::after {
         padding: 20px;
     }
     
-    /* 8. Pied de page */
+    /* 9. Pied de page */
     footer p {
         font-size: 0.8em;
     }
