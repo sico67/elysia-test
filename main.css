@@ -22,6 +22,10 @@ h1, h2, h3 {
     color: var(--color-primary);
 }
 
+strong {
+    font-weight: 900;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -103,7 +107,8 @@ nav a:hover {
 
 /* --- Section Héro --- */
 .hero-section {
-    background: url('salon_terrasse.jpg') center center/cover no-repeat; 
+    /* EXTENSION CORRIGÉE ICI */
+    background: url('salon_terrasse.jpeg') center center/cover no-repeat; 
     min-height: 70vh;
     display: flex;
     align-items: center;
@@ -246,7 +251,7 @@ section h2::after {
     color: white;
 }
 
-.spa-section h2, .spa-section h3 {
+.spa-section h2, .spa-section h3, .spa-section strong {
     color: white;
 }
 
