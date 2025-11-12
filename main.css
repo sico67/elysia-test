@@ -1,209 +1,471 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elysia Nature & Spa - Duplex de Luxe avec Sauna et Balnéo</title>
-    <link rel="stylesheet" href="main.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body>
+/* --- Couleurs & Typographie --- */
+:root {
+    --color-primary: #333; /* Noir/Gris foncé pour le texte principal */
+    --color-secondary: #008080; /* Une couleur teal/turquoise pour les accents (nature/spa) */
+    --color-background: #f4f4f4; /* Fond clair */
+    --color-light: #fffdf9; /* Blanc cassé pour les éléments de luxe */
+    --color-accent: #b8860b; /* Or/Cuivre pour rappeler les robinetteries */
+}
 
-    <header class="main-header">
-        <div class="logo">
-            <img src="logo_elysia.jpeg" alt="Logo Elysia Nature & Spa" class="logo-img">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#bien-etre">Bien-être & Spa</a></li>
-                <li><a href="#photos">Galerie</a></li>
-                <li><a href="#localisation">Localisation</a></li>
-                <li><a href="#reservation" class="cta-button">Réserver</a></li>
-            </ul>
-        </nav>
-    </header>
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: var(--color-background);
+    color: var(--color-primary);
+}
 
-    <section id="accueil" class="hero-section elysia-wall-bg">
-        <div class="hero-content">
-            <h1>Votre Évasion à <strong>Elysia Nature & Spa</strong></h1>
-            <p>Duplex de luxe, cocon de sérénité au cœur des montagnes de Boersch. Laissez-vous envelopper par la nature et le bien-être absolu.</p>
-            <a href="#reservation" class="cta-primary">Découvrir et Réserver votre séjour</a>
-        </div>
-    </section>
+h1, h2, h3 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-primary);
+}
 
-    <section class="description-section">
-        <div class="container">
-            <h2>Un Duplex Conçu pour le Luxe et la Détente</h2>
-            <div class="features-grid">
-                <div>
-                    <span class="material-icons">king_bed</span>
-                    <h3>L'Étage : Espace Nuit</h3>
-                    <p>Une chambre cosy à l'étage avec un <strong>lit King Size</strong> (2 places) pour des nuits réparatrices. Ambiance feutrée et vues discrètes sur la nature.</p>
-                </div>
-                <div>
-                    <span class="material-icons">event_seat</span>
-                    <h3>Le Rez-de-Chaussée : Salon</h3>
-                    <p>Un coin détente moderne avec une TV connectée et un <strong>canapé convertible</strong> confortable pouvant accueillir 2 personnes supplémentaires.</p>
-                </div>
-                <div>
-                    <span class="material-icons">balcony</span>
-                    <h3>Terrasse Privative</h3>
-                    <p>Profitez d'une <strong>terrassen sans vis-à-vis</strong> avec une vue imprenable sur les montagnes. Le lieu parfait pour votre café matinal ou apéritif.</p>
-                </div>
-                
-                <div>
-                    <span class="material-icons">kitchen</span>
-                    <h3>Kitchenette Équipée</h3>
-                    <p>Profitez d'une kitchenette complète avec <strong>micro-onde</strong>, <strong>réfrigérateur</strong>, <strong>plaque à induction</strong> et <strong>cafetière à dosette</strong> (café et thés offerts).</p>
-                </div>
-            </div>
-        </div>
-    </section>
+strong {
+    font-weight: 900;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Navigation & En-tête --- */
+.main-header {
+    background-color: var(--color-light);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-img {
+    height: 50px; /* Hauteur du logo image */
+    width: auto;
+    display: block;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--color-primary);
+    padding: 10px 15px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--color-secondary);
+}
+
+.cta-button {
+    background-color: var(--color-secondary);
+    color: white !important;
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin-left: 20px;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #006666; /* Variation de la couleur secondaire */
+}
+
+/* --- Styles des Boutons d'Action --- */
+.cta-primary {
+    display: inline-block;
+    background-color: var(--color-secondary);
+    color: white !important;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 20px;
+}
+
+.cta-primary:hover {
+    background-color: #006666;
+    transform: translateY(-2px);
+}
+
+.cta-primary.large {
+    font-size: 1.2em;
+    padding: 20px 40px;
+}
+
+/* --- Section Héro (Retour au mur avec logo) --- */
+.hero-section {
+    /* Base de la section HERO */
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    padding: 100px 20px;
+}
+
+/* FOND DU MUR ELYSIA (s'applique uniquement si la classe est présente dans le HTML) */
+.elysia-wall-bg {
+    /* Assurez-vous d'avoir téléchargé l'image nommée 'mur_elysia_bg.jpg' */
+    background: url('mur_elysia_bg.jpg') center center/cover no-repeat;
+}
+
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.45); /* Overlay sombre pour la lisibilité */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 0.5em;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.3em;
+    color: #f0f0f0;
+}
+
+/* --- Sections Générales --- */
+section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+    position: relative;
+    display: inline-block;
+}
+
+section h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: var(--color-secondary);
+    margin: 10px auto 0;
+}
+
+/* --- Section Caractéristiques (L'Appartement, Kitchenette, Équipements) --- */
+.description-section {
+    background-color: var(--color-light);
+}
+
+.features-grid {
+    display: grid;
+    /* 4 colonnes sur desktop, minimum 250px par colonne (pour les 4 vignettes de l'appart) */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.features-grid > div {
+    /* VIGNETTE STYLE UNIFIÉ */
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.features-grid > div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.features-grid h3 {
+    color: var(--color-accent);
+    margin-top: 10px;
+    font-size: 1.4em;
+}
+
+.material-icons {
+    font-size: 2.5em;
+    color: var(--color-secondary);
+}
+
+/* --- Ancienne Section Kitchenette (maintenant masquée) --- */
+.kitchen-section {
+    display: none; 
+}
+
+.offers {
+    /* Ce style n'est plus utilisé puisque la section est masquée */
+    display: none; 
+}
+/* --- Fin Ancienne Section Kitchenette --- */
+
+/* --- Section Bien-être & Spa --- */
+.spa-section {
+    background-color: #33383d; 
+    color: white;
+}
+
+.spa-section h2, .spa-section h3, .spa-section strong {
+    color: white;
+}
+
+.spa-features-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.spa-features-grid > div {
+    flex: 1;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    max-width: 500px;
+    text-align: left;
+}
+
+.spa-features-grid .material-icons {
+    color: var(--color-accent);
+    margin-right: 10px;
+}
+
+/* --- Section Galerie --- */
+.gallery-section {
+    background-color: var(--color-background);
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+.gallery-item {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+    transition: transform 0.3s;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05); 
+}
+
+/* --- Section Commodités du Complexe --- */
+.amenities-section {
+    padding: 60px 0;
+    background-color: #ececec; 
+    text-align: center;
+}
+
+/* --- Section Localisation --- */
+.location-section {
+    text-align: left;
+    background-color: var(--color-light);
+}
+
+.main-location-text {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.nearby-list h3 {
+    color: var(--color-secondary);
+    margin-top: 30px;
+}
+
+/* --- Section CTA (Réservation) --- */
+.cta-section {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 100px 20px;
+}
+
+.cta-section h2 {
+    color: white;
+}
+
+/* --- Styles pour la nouvelle section de Réservation --- */
+.reservation-box {
+    background-color: var(--color-light); 
+    color: var(--color-primary);
+    padding: 40px;
+    border-radius: 10px;
+    margin-top: 40px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.reservation-box h3 {
+    font-size: 1.8em;
+    color: var(--color-secondary);
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.reservation-box p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.calendar-integration-area {
+    min-height: 200px; 
+    padding: 20px;
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.cta-secondary {
+    display: inline-block;
+    background-color: var(--color-accent); 
+    color: white !important;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+.cta-secondary:hover {
+    background-color: #a0740a;
+}
+
+/* --- Section Avis Google --- */
+.reviews-section {
+    background-color: var(--color-background);
+    padding: 60px 0;
+}
+
+.cta-google {
+    display: inline-flex;
+    align-items: center;
+    background-color: #4285F4; 
+    color: white !important;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.cta-google:hover {
+    background-color: #357ae8;
+}
+
+.cta-google .material-icons {
+    color: white;
+    font-size: 1.3em;
+    margin-right: 8px;
+}
+
+/* --- Rendre le site responsive (pour téléphones) --- */
+@media (max-width: 768px) {
+    /* 1. Navigation et En-tête */
+    .main-header {
+        flex-direction: column;
+        padding: 10px 15px;
+    }
+    nav ul {
+        flex-direction: column; 
+        align-items: center;
+        margin-top: 5px;
+    }
+    nav li {
+        margin: 5px 0;
+    }
+    .cta-button {
+        margin-left: 0;
+        margin-top: 10px;
+        padding: 6px 12px;
+    }
+
+    /* 2. Section Héro */
+    .hero-content h1 {
+        font-size: 2.2em; 
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    /* 3. Sections Générales */
+    section {
+        padding: 40px 0; 
+    }
+    section h2 {
+        font-size: 1.8em;
+    }
+
+    /* 4. Bien-être & Spa */
+    .spa-features-grid {
+        flex-direction: column; 
+        gap: 20px;
+        align-items: center;
+    }
+    .spa-features-grid > div {
+        max-width: 90%;
+        text-align: center;
+    }
+
+    /* 5. Galerie d'Images */
+    .image-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+    }
+
+    /* 6. Localisation & Commodités */
+    .location-section {
+        text-align: center;
+    }
     
-    <section id="bien-etre" class="spa-section">
-        <div class="container">
-            <h2>Espace Bien-être Privatif au RDC</h2>
-            <div class="spa-features-grid">
-                <div>
-                    <h3><span class="material-icons">hot_tub</span> Baignoire Balnéo</h3>
-                    <p>Un espace aquatique dédié : une grande <strong>baignoire Balnéo 2 places</strong> pour une relaxation profonde, avec vue sur la nature.</p>
-                </div>
-                <div>
-                    <h3><span class="material-icons">sauna</span> Sauna <strong>4 Places</strong></h3>
-                    <p>Profitez d'un <strong>sauna infrarouge 4 places</strong> pour une détoxification complète, suivi d'une luxueuse <strong>douche à l'italienne</strong> cuivrée.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="photos" class="gallery-section">
-        <h2>Galerie Photo</h2>
-        <p>Découvrez en images le cadre d'exception d'Elysia Nature & Spa.</p>
-        <div class="image-grid">
-            
-            <div class="gallery-item">
-                <img src="salon_terrasse.jpeg" alt="Espace salon avec vue sur la terrasse et les montagnes">
-            </div>
-            
-            <div class="gallery-item">
-                <img src="sauna_interieur.jpeg" alt="Cabine de sauna privatif dans l'espace bien-être">
-            </div>
-            
-            <div class="gallery-item">
-                <img src="douche_italienne.jpeg" alt="Douche à l'italienne moderne avec carrelage sombre et robinetterie cuivrée">
-            </div>
-
-            <div class="gallery-item">
-                <img src="cuisine_microonde.jpeg" alt="Coin cuisine moderne avec appareils intégrés">
-            </div>
-
-            <div class="gallery-item">
-                <img src="escalier_lumiere.jpeg" alt="Escalier design avec éclairage LED intégré">
-            </div>
-
-            <div class="gallery-item">
-                <img src="lavabo_detail.jpeg" alt="Détail du lavabo et du mur décoratif en bois brut">
-            </div>
-
-            <div class="gallery-item">
-                <img src="mur_tv_lattes.jpeg" alt="Mur TV moderne avec lattes de bois et climatisation">
-            </div>
-            
-        </div>
-    </section>
-
-    <section class="amenities-section">
-        <div class="container">
-            <h2>Commodités du Complexe Résidentiel</h2>
-            <div class="features-grid">
-                <div>
-                    <span class="material-icons">pool</span>
-                    <h3>Piscine Accès Libre</h3>
-                </div>
-                <div>
-                    <span class="material-icons">sports_tennis</span>
-                    <h3>2 Courts de Tennis</h3>
-                </div>
-                <div>
-                    <span class="material-icons">sports_soccer</span>
-                    <h3>Terrain de Pétanque</h3>
-                </div>
-                <div>
-                    <span class="material-icons">filter_hdr</span>
-                    <h3>Aire de Pique-Nique</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="localisation" class="location-section">
-        <div class="container">
-            <h2>Un Écrin de Verdure : Les Hauts de Klingenthal</h2>
-            <p class="main-location-text">
-                Elysia est niché sur les hauteurs de Boersch, au sein du complexe résidentiel <strong>"Les Hauts de Klingenthal"</strong>, dans un environnement calme et privilégié.
-            </p>
-
-            <a href="https://www.waze.com/fr/live-map/directions/les-hauts-de-klingenthal-route-de-grendelbruch-klingenthal-(boersch)?to=place.w.4850149.48567023.19092517" 
-               target="_blank" 
-               class="cta-primary"
-               style="margin-top: 15px; margin-bottom: 30px;">
-                <span class="material-icons" style="color: white; margin-right: 8px;">navigation</span>
-                Ouvrir l'itinéraire Waze
-            </a>
-            
-            <h3>Randonnées et Nature :</h3>
-            <p>
-                <span class="material-icons">forest</span> En sortant de chez vous, accédez directement à de <strong>nombreux sentiers de randonnées</strong> et de promenades.
-            </p>
-            
-            <div class="nearby-list">
-                <h3>À Proximité :</h3>
-                <p><strong>10 minutes :</strong> Obernai et la célèbre Route des Vins.</p>
-                <p><strong>30 minutes :</strong> Les villes historiques de Colmar et Strasbourg.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="reservation" class="cta-section">
-        <div class="container">
-            <h2>Vérifiez les Disponibilités et Réservez Votre Évasion</h2>
-            
-            <div class="reservation-box">
-                <h3>1. Choisissez vos dates</h3>
-                <p>Nous utilisons un système de réservation externe pour vous garantir une expérience simple et sécurisée.</p>
-                
-                <div class="calendar-integration-area">
-                    <p>
-                        *(Ici, vous inséreriez le code (widget) de votre plateforme de réservation pour afficher le calendrier interactif.)*
-                    </p>
-                    <a href="URL_DE_VOTRE_PLATEFORME_DE_RESERVATION" target="_blank" class="cta-primary large">Voir le Calendrier et Réserver</a>
-                </div>
-                <h3>2. Finalisez votre réservation</h3>
-                <p>Une fois les dates choisies, vous serez redirigé vers la page de paiement sécurisée de notre partenaire.</p>
-                
-                <div class="payment-link-area">
-                    <a href="URL_DE_VOTRE_LIEN_DE_PAIEMENT_SECURISÉ" target="_blank" class="cta-secondary">Accéder au Paiement Sécurisé</a>
-                </div>
-                </div>
-        </div>
-    </section>
+    /* 7. Réservation et CTA */
+    .cta-primary.large, .cta-secondary {
+        font-size: 1em;
+        padding: 12px 25px;
+    }
+    .reservation-box {
+        padding: 20px;
+    }
     
-    <section id="avis" class="reviews-section">
-        <div class="container">
-            <h2>Nos Clients Adorent Elysia Nature & Spa</h2>
-            <p>Découvrez ce que disent nos hôtes de leur expérience de luxe et de bien-être.</p>
-            
-            <a href="URL_DE_VOS_AVIS_GOOGLE" target="_blank" class="cta-google">
-                <span class="material-icons">star</span> Voir les Avis Google
-            </a>
-            </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Elysia Nature & Spa. Tous droits réservés.</p>
-        <p><a href="mailto:votre-email@example.com">Contactez-nous</a> | [Lien vers les Mentions Légales]</p>
-    </footer>
-
-</body>
-</html>
+    /* 8. Pied de page */
+    footer p {
+        font-size: 0.8em;
+    }
+}
