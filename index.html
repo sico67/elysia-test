@@ -7,10 +7,12 @@
     <meta name="description" content="Duplex de luxe à Boersch avec spa privatif. Sauna infrarouge, baignoire balnéo, terrasse vue montagne. Expérience bien-être unique en Alsace.">
     <meta property="og:title" content="Elysia Nature & Spa - Location d'exception">
     <meta property="og:description" content="Parenthèse de bien-être au cœur des Vosges du Nord">
-    <meta property="og:image" content="images/salon_terrasse.jpeg">
+    <meta property="og:image" content="images/salon_terrasse.jpeg"> 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
@@ -27,10 +29,10 @@
                 </button>
                 <ul class="nav-list">
                     <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#bien-etre">Bien-être & Spa</a></li>
+                    <li><a href="#description">Le Duplex</a></li>
+                    <li><a href="#bien-etre">Spa Privé</a></li>
                     <li><a href="#photos">Galerie</a></li>
                     <li><a href="#localisation">Localisation</a></li>
-                    <li><a href="#avis">Avis</a></li>
                     <li><a href="#reservation" class="cta-button">Réserver</a></li>
                 </ul>
             </nav>
@@ -52,7 +54,7 @@
             </div>
         </section>
 
-        <section id="description" class="description-section"> 
+        <section id="description" class="description-section">
             <div class="container">
                 <h2>Un Duplex Conçu pour le Luxe et la Détente</h2>
                 <div class="features-grid">
@@ -250,7 +252,7 @@
     </div>
 
     <script>
-        // Lightbox
+        // Lightbox (Galerie)
         const modal = document.getElementById("lightboxModal");
         const modalImg = document.getElementById("modalImage");
         const closeBtn = document.querySelector(".close-btn");
@@ -261,7 +263,7 @@
                 modal.style.display = "block";
                 modalImg.src = img.src;
                 modalImg.alt = img.alt;
-                document.body.style.overflow = "hidden";
+                document.body.style.overflow = "hidden"; // Empêche le scroll en arrière-plan
             });
         });
 
