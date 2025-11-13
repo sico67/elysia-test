@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elysia Nature & Spa - Duplex de Luxe avec Sauna et Balnéo</title>
     <meta name="description" content="Duplex de luxe à Boersch avec spa privatif. Sauna infrarouge, baignoire balnéo, terrasse vue montagne. Expérience bien-être unique en Alsace.">
+    <meta property="og:title" content="Elysia Nature & Spa - Location d'exception">
+    <meta property="og:description" content="Parenthèse de bien-être au cœur des Vosges du Nord">
+    <meta property="og:image" content="images/salon_terrasse.jpeg">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
@@ -15,7 +19,7 @@
         <div class="container">
             <a href="#" class="logo">
                 <span class="material-icons">spa</span>
-                <span class="logo-text">ELY<span class="logo-accent">SIA</span> <small>Nature & Spa</small></span>
+                <span class="logo-text">ELY<span class="logo-accent">SIA</span></span>
             </a>
             <nav class="main-nav">
                 <button class="mobile-menu-toggle" aria-label="Menu mobile">
@@ -23,10 +27,10 @@
                 </button>
                 <ul class="nav-list">
                     <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#description">Le Duplex</a></li>
-                    <li><a href="#bien-etre">Spa Privé</a></li>
+                    <li><a href="#bien-etre">Bien-être & Spa</a></li>
                     <li><a href="#photos">Galerie</a></li>
                     <li><a href="#localisation">Localisation</a></li>
+                    <li><a href="#avis">Avis</a></li>
                     <li><a href="#reservation" class="cta-button">Réserver</a></li>
                 </ul>
             </nav>
@@ -34,7 +38,7 @@
     </header>
 
     <main>
-        <section id="accueil" class="hero-section">
+        <section id="accueil" class="hero-section elysia-wall-bg">
             <div class="hero-content container">
                 <h1>Votre Évasion à <strong>Elysia Nature & Spa</strong></h1>
                 <p class="hero-subtitle">Duplex de luxe, cocon de sérénité au cœur des montagnes de Boersch</p>
@@ -48,7 +52,7 @@
             </div>
         </section>
 
-        <section id="description" class="description-section">
+        <section id="description" class="description-section"> 
             <div class="container">
                 <h2>Un Duplex Conçu pour le Luxe et la Détente</h2>
                 <div class="features-grid">
@@ -160,7 +164,7 @@
                     Elysia est niché sur les hauteurs de Boersch, au sein du complexe résidentiel <strong>"Les Hauts de Klingenthal"</strong>, dans un environnement calme et privilégié.
                 </p>
                 <a href="https://www.waze.com/fr/live-map/directions/les-hauts-de-klingenthal-route-de-grendelbruch" 
-                   target="_blank" class="cta-primary">
+                   target="_blank" class="cta-primary" style="margin: 20px 0;">
                     <span class="material-icons">navigation</span>
                     Ouvrir l'itinéraire Waze
                 </a>
@@ -232,7 +236,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Elysia Nature & Spa. Tous droits réservés.</p>
+            <p>© 2025 Elysia Nature & Spa. Tous droits réservés.</p>
             <div class="footer-nav">
                 <a href="mailto:contact@elysia-spa.fr">Contactez-nous</a>
                 <a href="#mentions-legales">Mentions légales</a>
@@ -240,12 +244,56 @@
         </div>
     </footer>
 
-    <!-- Lightbox -->
     <div id="lightboxModal" class="modal">
-        <span class="close-btn">&times;</span>
+        <span class="close-btn">×</span>
         <img class="modal-content" id="modalImage" alt="Agrandissement">
     </div>
 
-    <script src="main.js"></script>
+    <script>
+        // Lightbox
+        const modal = document.getElementById("lightboxModal");
+        const modalImg = document.getElementById("modalImage");
+        const closeBtn = document.querySelector(".close-btn");
+        const galleryImages = document.querySelectorAll(".gallery-item img");
+
+        galleryImages.forEach(img => {
+            img.addEventListener("click", () => {
+                modal.style.display = "block";
+                modalImg.src = img.src;
+                modalImg.alt = img.alt;
+                document.body.style.overflow = "hidden";
+            });
+        });
+
+        closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        });
+
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        });
+
+        // Menu mobile
+        const mobileToggle = document.querySelector(".mobile-menu-toggle");
+        const navList = document.querySelector(".nav-list");
+
+        mobileToggle.addEventListener("click", () => {
+            navList.classList.toggle("active");
+            const icon = mobileToggle.querySelector(".material-icons");
+            icon.textContent = navList.classList.contains("active") ? "close" : "menu";
+        });
+
+        // Fermer menu au clic sur un lien
+        document.querySelectorAll(".nav-list a").forEach(link => {
+            link.addEventListener("click", () => {
+                navList.classList.remove("active");
+                mobileToggle.querySelector(".material-icons").textContent = "menu";
+            });
+        });
+    </script>
 </body>
 </html>
