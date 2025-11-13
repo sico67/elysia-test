@@ -1,492 +1,251 @@
-/* ==================================== */
-/* Styles Généraux */
-/* ==================================== */
-
-body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f7f7f7;
-    color: #333;
-    line-height: 1.6;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-h1, h2, h3 {
-    font-family: 'Georgia', serif;
-    color: #004d40; /* Vert foncé/Émeraude */
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 10px;
-    padding-top: 50px;
-}
-
-h3 {
-    color: #004d40;
-}
-
-section {
-    padding: 40px 0;
-}
-
-strong {
-    font-weight: bold;
-    color: #004d40;
-}
-
-/* Soulignement stylisé sous les titres de section */
-.description-section h2::after, 
-.kitchen-section h2::after,
-.spa-section h2::after,
-.gallery-section h2::after,
-.location-section h2::after,
-.reviews-section h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background-color: #009688; /* Vert plus clair */
-    margin: 10px auto 30px;
-}
-
-/* ==================================== */
-/* Header et Navigation */
-/* ==================================== */
-
-.main-header {
-    background-color: #ffffff;
-    padding: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 99;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-.logo-img {
-    height: 40px; 
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-}
-
-nav ul li {
-    margin-left: 20px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s;
-    padding: 8px 10px;
-}
-
-nav ul li a:hover {
-    color: #009688;
-}
-
-/* Style du bouton Réserver dans la nav */
-.cta-button {
-    background-color: #009688;
-    color: white !important;
-    padding: 8px 15px;
-    border-radius: 5px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.cta-button:hover {
-    background-color: #00695c;
-    color: white !important;
-}
-
-/* ==================================== */
-/* Section Héro */
-/* ==================================== */
-
-.hero-section {
-    /* Suppression de l'image de fond générale, elle est gérée par la classe .elysia-wall-bg */
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    position: relative;
-    padding: 100px 20px;
-}
-
-/* FOND DE MUR ACTIVÉ */
-.elysia-wall-bg {
-    background: url('mur_elysia_bg.jpg') center center/cover no-repeat;
-}
-
-/* Overlay pour la lisibilité du texte */
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.45); 
-    z-index: 1;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-}
-
-.hero-content h1 {
-    font-size: 3em;
-    color: white;
-    margin-bottom: 20px;
-}
-
-.hero-content p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-}
-
-.cta-primary {
-    display: inline-block;
-    background-color: #009688;
-    color: white !important;
-    padding: 12px 25px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    text-transform: uppercase;
-}
-
-.cta-primary:hover {
-    background-color: #00695c;
-}
-
-.cta-primary.large {
-    padding: 15px 30px;
-    font-size: 1.1em;
-}
-
-/* ==================================== */
-/* Sections Caractéristiques et Services */
-/* ==================================== */
-
-.features-grid {
-    display: grid;
-    /* 4 colonnes pour les grands écrans, s'adapte à 1 ou 2 sur les petits */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-    text-align: center;
-}
-
-.features-grid > div {
-    background-color: #ffffff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s;
-}
-
-.features-grid > div:hover {
-    transform: translateY(-5px);
-}
-
-.features-grid .material-icons {
-    font-size: 40px;
-    color: #009688;
-    margin-bottom: 15px;
-}
-
-.features-grid h3 {
-    margin-top: 0;
-}
-
-/* Style des commodités (Amenities) dans la section Localisation */
-.amenities-section .features-grid > div {
-    background-color: #e0f2f1; /* Fond plus clair pour différencier */
-    padding: 15px;
-}
-
-/* ==================================== */
-/* Section Spa / Bien-être */
-/* ==================================== */
-
-.spa-section {
-    background-color: #fff8e1; /* Fond crème très clair */
-}
-
-.spa-features-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 40px;
-    text-align: center;
-}
-
-.spa-features-grid > div {
-    background-color: white;
-    padding: 30px;
-    border: 1px solid #ffecb3;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-.spa-features-grid .material-icons {
-    font-size: 30px;
-    color: #004d40;
-    vertical-align: middle;
-    margin-right: 5px;
-}
-
-/* ==================================== */
-/* Galerie Photo */
-/* ==================================== */
-
-.gallery-section {
-    background-color: white;
-}
-
-.image-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 15px;
-    margin-top: 30px;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 6px;
-    cursor: pointer; /* Indique qu'on peut cliquer */
-    transition: transform 0.3s;
-}
-
-.gallery-item img:hover {
-    transform: scale(1.02);
-}
-
-/* ==================================== */
-/* Section Localisation */
-/* ==================================== */
-
-.location-section {
-    background-color: #f7f7f7;
-    text-align: center;
-}
-
-.main-location-text {
-    font-size: 1.1em;
-    margin-bottom: 20px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.nearby-list {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #ccc;
-    display: inline-block;
-    text-align: left;
-}
-
-.nearby-list h3 {
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-.location-section .material-icons {
-    color: #009688;
-    vertical-align: middle;
-    margin-right: 5px;
-}
-
-/* ==================================== */
-/* Section CTA / Réservation */
-/* ==================================== */
-
-.cta-section {
-    background-color: #004d40; 
-    color: white;
-    text-align: center;
-}
-
-.cta-section h2 {
-    color: white;
-}
-
-.reservation-box {
-    background-color: #00695c;
-    padding: 30px;
-    border-radius: 8px;
-    margin-top: 30px;
-}
-
-.reservation-box h3 {
-    color: #ffeb3b; /* Jaune/Or pour mettre en avant */
-    margin-top: 0;
-}
-
-.cta-secondary {
-    display: inline-block;
-    background-color: white;
-    color: #004d40;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: opacity 0.3s;
-    margin-top: 15px;
-}
-
-.cta-secondary:hover {
-    opacity: 0.9;
-}
-
-/* ==================================== */
-/* Section Avis */
-/* ==================================== */
-
-.reviews-section {
-    background-color: white;
-    text-align: center;
-}
-
-.cta-google {
-    display: inline-block;
-    background-color: #4285f4; /* Bleu Google */
-    color: white !important;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    margin-top: 20px;
-}
-
-.cta-google:hover {
-    background-color: #357ae8;
-}
-
-.cta-google .material-icons {
-    vertical-align: middle;
-    margin-right: 5px;
-}
-
-/* ==================================== */
-/* Footer */
-/* ==================================== */
-
-footer {
-    background-color: #222;
-    color: #ccc;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 0.9em;
-}
-
-footer a {
-    color: #009688;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-/* ==================================== */
-/* Styles pour la Modale/Lightbox (Galerie) */
-/* ==================================== */
-
-/* Conteneur de la modale (initialement caché) */
-.modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1000; 
-    padding-top: 60px; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%;
-    overflow: auto; 
-    background-color: rgba(0, 0, 0, 0.9); 
-}
-
-/* Contenu de la modale (l'image agrandie) */
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%; 
-    max-width: 1200px; 
-    animation-name: zoom;
-    animation-duration: 0.6s;
-}
-
-/* Bouton de fermeture (la croix) */
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-    cursor: pointer;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Animation d'ouverture (simple zoom) */
-@keyframes zoom {
-    from {transform:scale(0)} 
-    to {transform:scale(1)}
-}
-
-/* Ajustement pour les petits écrans */
-@media only screen and (max-width: 700px){
-    .modal-content {
-        width: 100%;
-    }
-    .hero-content h1 {
-        font-size: 2.2em;
-    }
-    .main-header {
-        flex-direction: column;
-    }
-    nav ul {
-        justify-content: center;
-        padding-top: 10px;
-    }
-    nav ul li {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elysia Nature & Spa - Duplex de Luxe avec Sauna et Balnéo</title>
+    <meta name="description" content="Duplex de luxe à Boersch avec spa privatif. Sauna infrarouge, baignoire balnéo, terrasse vue montagne. Expérience bien-être unique en Alsace.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">
+                <span class="material-icons">spa</span>
+                <span class="logo-text">ELY<span class="logo-accent">SIA</span> <small>Nature & Spa</small></span>
+            </a>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" aria-label="Menu mobile">
+                    <span class="material-icons">menu</span>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#description">Le Duplex</a></li>
+                    <li><a href="#bien-etre">Spa Privé</a></li>
+                    <li><a href="#photos">Galerie</a></li>
+                    <li><a href="#localisation">Localisation</a></li>
+                    <li><a href="#reservation" class="cta-button">Réserver</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="accueil" class="hero-section">
+            <div class="hero-content container">
+                <h1>Votre Évasion à <strong>Elysia Nature & Spa</strong></h1>
+                <p class="hero-subtitle">Duplex de luxe, cocon de sérénité au cœur des montagnes de Boersch</p>
+                <a href="#reservation" class="cta-primary large">
+                    <span class="material-icons">event_available</span>
+                    Réserver votre séjour
+                </a>
+            </div>
+            <div class="scroll-indicator">
+                <span class="material-icons">expand_more</span>
+            </div>
+        </section>
+
+        <section id="description" class="description-section">
+            <div class="container">
+                <h2>Un Duplex Conçu pour le Luxe et la Détente</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <span class="material-icons">king_bed</span>
+                        <h3>L'Étage : Espace Nuit</h3>
+                        <p>Une chambre cosy avec <strong>lit King Size</strong> pour des nuits réparatrices. Ambiance feutrée et vues sur la nature.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-icons">event_seat</span>
+                        <h3>Le Rez-de-Chaussée : Salon</h3>
+                        <p>Coin détente moderne avec TV connectée et <strong>canapé convertible</strong> pour 2 personnes supplémentaires.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-icons">balcony</span>
+                        <h3>Terrasse Privative</h3>
+                        <p><strong>Terrasse sans vis-à-vis</strong> avec vue imprenable sur les montagnes. Parfait pour l'apéritif.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="material-icons">kitchen</span>
+                        <h3>Kitchenette Équipée</h3>
+                        <p>Micro-onde, réfrigérateur, plaque à induction et <strong>cafetière à dosette</strong> (café et thés offerts).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="bien-etre" class="spa-section">
+            <div class="container">
+                <h2>Espace Bien-être Privatif au RDC</h2>
+                <div class="spa-features-grid">
+                    <div class="spa-feature">
+                        <span class="material-icons">hot_tub</span>
+                        <h3>Baignoire Balnéo</h3>
+                        <p>Grande <strong>baignoire Balnéo 2 places</strong> avec vue sur la nature.</p>
+                    </div>
+                    <div class="spa-feature">
+                        <span class="material-icons">sauna</span>
+                        <h3>Sauna Infrarouge</h3>
+                        <p><strong>Sauna infrarouge 4 places</strong> pour une détoxification complète.</p>
+                    </div>
+                    <div class="spa-feature">
+                        <span class="material-icons">shower</span>
+                        <h3>Douche à l'Italienne</h3>
+                        <p>Luxueuse <strong>douche à l'italienne</strong> cuivrée après le sauna.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="photos" class="gallery-section">
+            <div class="container">
+                <h2>Galerie Photo</h2>
+                <p>Découvrez en images le cadre d'exception d'Elysia Nature & Spa.</p>
+                <div class="image-grid">
+                    <div class="gallery-item">
+                        <img src="salon_terrasse.jpeg" alt="Espace salon avec vue sur la terrasse et les montagnes" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="sauna_interieur.jpeg" alt="Cabine de sauna privatif" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="douche_italienne.jpeg" alt="Douche à l'italienne moderne" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="cuisine_microonde.jpeg" alt="Coin cuisine moderne" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="escalier_lumiere.jpeg" alt="Escalier design avec éclairage LED" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="lavabo_detail.jpeg" alt="Détail du lavabo en bois brut" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="mur_tv_lattes.jpeg" alt="Mur TV moderne avec lattes de bois" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="amenities-section">
+            <div class="container">
+                <h2>Commodités du Complexe Résidentiel</h2>
+                <div class="features-grid">
+                    <div class="amenity-item">
+                        <span class="material-icons">pool</span>
+                        <h3>Piscine Accès Libre</h3>
+                    </div>
+                    <div class="amenity-item">
+                        <span class="material-icons">sports_tennis</span>
+                        <h3>2 Courts de Tennis</h3>
+                    </div>
+                    <div class="amenity-item">
+                        <span class="material-icons">sports_soccer</span>
+                        <h3>Terrain de Pétanque</h3>
+                    </div>
+                    <div class="amenity-item">
+                        <span class="material-icons">filter_hdr</span>
+                        <h3>Aire de Pique-Nique</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="localisation" class="location-section">
+            <div class="container">
+                <h2>Un Écrin de Verdure : Les Hauts de Klingenthal</h2>
+                <p class="main-location-text">
+                    Elysia est niché sur les hauteurs de Boersch, au sein du complexe résidentiel <strong>"Les Hauts de Klingenthal"</strong>, dans un environnement calme et privilégié.
+                </p>
+                <a href="https://www.waze.com/fr/live-map/directions/les-hauts-de-klingenthal-route-de-grendelbruch" 
+                   target="_blank" class="cta-primary">
+                    <span class="material-icons">navigation</span>
+                    Ouvrir l'itinéraire Waze
+                </a>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2713.123456789!2d7.499999!3d48.400000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDI0JzAwLjAiTiA3wrA1MCcwMC4wIkU!5e0!3m2!1sfr!2sfr" 
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+                <div class="nearby-list">
+                    <h3>À Proximité</h3>
+                    <div class="features-grid">
+                        <div class="amenity-item">
+                            <span class="material-icons">wine_bar</span>
+                            <p><strong>10 min</strong><br>Obernai et la Route des Vins</p>
+                        </div>
+                        <div class="amenity-item">
+                            <span class="material-icons">museum</span>
+                            <p><strong>30 min</strong><br>Colmar et Strasbourg</p>
+                        </div>
+                        <div class="amenity-item">
+                            <span class="material-icons">forest</span>
+                            <p><strong>0 min</strong><br>Sentiers de randonnée au départ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reservation" class="cta-section">
+            <div class="container">
+                <h2>Vérifiez les Disponibilités et Réservez Votre Évasion</h2>
+                <div class="reservation-box">
+                    <h3>À partir de 180€ / nuit</h3>
+                    <p>Inclus : Spa privatif, parking, Wi-Fi, café/thés</p>
+                    <a href="URL_DE_VOTRE_PLATEFORME" target="_blank" class="cta-primary large">
+                        <span class="material-icons">event_available</span>
+                        Voir le Calendrier
+                    </a>
+                    <p class="alternative-contact">
+                        Ou contactez-nous : <a href="tel:+33612345678">06 12 34 56 78</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="avis" class="reviews-section">
+            <div class="container">
+                <h2>Nos Clients Adorent Elysia Nature & Spa</h2>
+                <div class="reviews-grid">
+                    <blockquote class="review-card">
+                        <div class="stars">
+                            <span class="material-icons">star</span>
+                            <span class="material-icons">star</span>
+                            <span class="material-icons">star</span>
+                            <span class="material-icons">star</span>
+                            <span class="material-icons">star</span>
+                        </div>
+                        <p>"Week-end parfait ! Le spa privé est un vrai plus. Tout était impeccable."</p>
+                        <cite>— Marie & Thomas</cite>
+                    </blockquote>
+                </div>
+                <a href="URL_DE_VOS_AVIS" target="_blank" class="cta-google">
+                    <span class="material-icons">star</span>
+                    Voir les Avis Google
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Elysia Nature & Spa. Tous droits réservés.</p>
+            <div class="footer-nav">
+                <a href="mailto:contact@elysia-spa.fr">Contactez-nous</a>
+                <a href="#mentions-legales">Mentions légales</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightboxModal" class="modal">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modalImage" alt="Agrandissement">
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
