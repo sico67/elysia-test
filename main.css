@@ -1,492 +1,74 @@
-/* Variables et Reset */
-:root {
-    --primary-color: #009688; /* Vert Émeraude Clair */
-    --primary-dark: #004d40; /* Vert Forêt (plus foncé) */
-    --primary-light: #e0f2f1;
-    --text-dark: #1a1a1a;
-    --gray-bg: #f7f7f7;
-    --white: #ffffff;
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
-    --border-radius: 8px;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
+/* --- NOUVEAUX STYLES POUR LE CARROUSEL --- */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px;
-}
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background-color: var(--gray-bg);
-    color: var(--text-dark);
-    line-height: 1.6;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Typographie */
-h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
-    color: var(--primary-dark);
-    line-height: 1.2;
-}
-
-h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-}
-
-h2 {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background-color: var(--primary-color);
-    margin: 10px auto 40px;
-}
-
-h3 {
-    font-size: 1.3rem;
-    margin: 1rem 0;
-}
-
-/* Header */
-.main-header {
-    background-color: var(--white);
-    padding: 1rem 0;
-    box-shadow: var(--shadow);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.main-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--primary-dark);
-}
-
-.logo .material-icons {
-    font-size: 2rem;
-    color: var(--primary-color);
-}
-
-.logo-accent {
-    color: var(--primary-color);
-}
-
-.nav-list {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    align-items: center;
-}
-
-.nav-list a {
-    text-decoration: none;
-    color: var(--text-dark);
-    font-weight: 500;
-    transition: var(--transition);
-    padding: 0.5rem 0;
-}
-
-.nav-list a:hover {
-    color: var(--primary-color);
-}
-
-.cta-button {
-    background-color: var(--primary-color);
-    color: var(--white) !important;
-    padding: 0.5rem 1.2rem;
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    box-shadow: var(--shadow);
-}
-
-.cta-button:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-2px);
-}
-
-.mobile-menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 1001; /* Pour être au-dessus du nav quand actif */
-}
-
-/* Hero */
-.hero-section {
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--white);
-    padding: 100px 20px;
-    /* Retrait du background ici. Le fond est défini par la classe .elysia-wall-bg ci-dessous */
-    position: relative; 
-    z-index: 1;
-}
-
-/* 🟢 CORRECTION CRITIQUE: DÉFINITION DU FOND DU MUR */
-.elysia-wall-bg {
-    /* Image du mur en fond */
-    background: url('mur_elysia_bg.jpg') center center/cover no-repeat;
-    /* Ajout d'un pseudo-élément pour l'overlay foncé */
-    position: absolute;
-    top: 0;
-    left: 0;
+.carousel-container {
     width: 100%;
-    height: 100%;
-    /* Overlay pour garantir la lisibilité du texte blanc sur le mur */
-    background-color: rgba(0, 77, 64, 0.45); /* Utilisation de primary-dark avec transparence */
-}
-/* Le contenu du héros doit être au-dessus de l'overlay */
-.hero-content {
+    /* Définissez une hauteur pour le carrousel */
+    max-height: 550px; 
+    overflow: hidden; 
     position: relative;
-    z-index: 2;
+    border-radius: 12px;
+    margin-top: 30px;
 }
 
-
-.hero-content h1 {
-    color: var(--white);
-    margin-bottom: 1rem;
+.carousel-track {
+    display: flex; 
+    transition: transform 0.4s ease-in-out; 
+    /* La largeur est gérée par le JS pour s'adapter au nombre de slides */
 }
 
-.hero-subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+.carousel-slide {
+    min-width: 100%; /* Chaque slide prend 100% de la largeur du container */
+    position: relative;
+    box-sizing: border-box;
+    /* Assure que chaque slide prend 1/N de la largeur totale du track */
+    width: calc(100% / var(--total-slides, 4)); 
 }
 
-.cta-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: var(--primary-color);
-    color: var(--white) !important;
-    padding: 1rem 2rem;
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-weight: 600;
-    transition: var(--transition);
-}
-
-.cta-primary:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-3px);
-}
-
-.cta-primary.large {
-    font-size: 1.1rem;
-    padding: 1.1rem 2.5rem;
-}
-
-.scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: bounce 2s infinite;
-    z-index: 2;
-}
-
-.scroll-indicator .material-icons {
-    font-size: 2rem;
-}
-
-/* Sections */
-section {
-    padding: 80px 0;
-}
-
-.features-grid, .spa-features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.feature-card, .spa-feature, .amenity-item, .review-card {
-    background-color: var(--white);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    text-align: center;
-}
-
-.feature-card:hover, .spa-feature:hover, .amenity-item:hover {
-    transform: translateY(-5px);
-}
-
-.feature-card .material-icons, .spa-feature .material-icons, .amenity-item .material-icons {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-/* Spa */
-.spa-section {
-    background-color: var(--primary-light);
-}
-
-.spa-features-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-/* Galerie */
-.gallery-section {
-    background-color: var(--white);
-}
-
-.image-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.gallery-item {
-    overflow: hidden;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-}
-
-.gallery-item img {
+.carousel-img {
     width: 100%;
-    height: 300px;
-    object-fit: cover;
-    cursor: pointer;
-    transition: transform 0.5s;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.1);
-}
-
-/* Localisation */
-.location-section {
-    background-color: var(--gray-bg);
-}
-
-.main-location-text {
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto 2rem;
-    text-align: center;
-}
-
-.map-container {
-    margin-top: 3rem;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-}
-
-.nearby-list {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid #ccc;
-}
-
-/* Reservation */
-.cta-section {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
-    color: var(--white);
-    text-align: center;
-}
-
-.cta-section h2, .cta-section h3 {
-    color: var(--white);
-}
-
-.reservation-box {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 2.5rem;
-    border-radius: var(--border-radius);
-    margin-top: 2rem;
-}
-
-.alternative-contact {
-    margin-top: 1.5rem;
-    font-size: 1.1rem;
-}
-
-/* Avis */
-.reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin: 3rem 0;
-}
-
-.review-card .stars {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.review-card cite {
-    font-style: normal;
-    font-weight: 600;
-    color: var(--primary-dark);
-}
-
-.cta-google {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: #4285f4;
-    color: var(--white) !important;
-    padding: 0.8rem 1.5rem;
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.cta-google:hover {
-    background-color: #357ae8;
-}
-
-/* Footer */
-footer {
-    background-color: #1a1a1a;
-    color: #ccc;
-    text-align: center;
-    padding: 2rem 0;
-}
-
-.footer-nav {
-    margin: 1rem 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.footer-nav a {
-    color: var(--primary-light);
-    text-decoration: none;
-}
-
-.footer-nav a:hover {
-    color: var(--primary-color);
-    text-decoration: underline;
-}
-
-/* Lightbox (Modale) */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    padding-top: 30px; /* Ajout d'un padding pour la croix */
-}
-
-.modal-content {
-    margin: auto;
+    height: 550px; /* Assure une hauteur fixe pour toutes les images */
+    object-fit: cover; 
     display: block;
-    width: 90%;
-    max-width: 900px;
-    max-height: 90vh; /* Utiliser vh pour s'adapter à l'écran */
-    object-fit: contain;
-    border-radius: var(--border-radius);
-    margin-top: 30px; /* Assure que l'image est sous la croix */
 }
 
-.close-btn {
+.carousel-caption {
     position: absolute;
-    top: 20px;
-    right: 35px;
-    color: var(--white);
-    font-size: 40px;
-    font-weight: bold;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.6); 
+    color: white;
+    text-align: center;
+    font-size: 1.1em;
+    font-family: 'Inter', sans-serif;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
     cursor: pointer;
-    transition: var(--transition);
+    z-index: 10;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
 }
 
-.close-btn:hover {
-    color: var(--primary-color);
-    transform: rotate(90deg);
+.carousel-nav:hover {
+    background: rgba(0, 0, 0, 0.8);
 }
 
-/* Animations */
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-    40% { transform: translateX(-50%) translateY(-10px); }
-    60% { transform: translateX(-50%) translateY(-5px); }
+.carousel-nav.prev {
+    left: 10px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .mobile-menu-toggle {
-        display: block;
-    }
-    
-    .main-nav {
-        position: relative; /* Ajustement pour la modale mobile */
-    }
-
-    .nav-list {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%; /* Change 80% to 100% for better mobile usage */
-        height: calc(100vh - 70px);
-        background-color: var(--white);
-        flex-direction: column;
-        padding: 2rem;
-        transition: var(--transition);
-        box-shadow: var(--shadow);
-        gap: 1.5rem; /* Ajustement de l'espacement dans le menu */
-        z-index: 990;
-    }
-    
-    .nav-list.active {
-        left: 0;
-    }
-
-    .nav-list a {
-        font-size: 1.2rem;
-        padding: 1rem 0;
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid var(--gray-bg);
-    }
-    
-    section {
-        padding: 60px 0;
-    }
+.carousel-nav.next {
+    right: 10px;
 }
