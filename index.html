@@ -32,8 +32,7 @@
                     <li><a href="#description">Le Duplex</a></li>
                     <li><a href="#bien-etre">Spa Privé</a></li>
                     <li><a href="#photos">Galerie</a></li>
-                    <li><a href="#localisation">Localisation</a></li>
-                    <li><a href="#disponibilites">Disponibilités</a></li>
+                    <li><a href="#localisation">Localisation</a></li> <li><a href="#disponibilites">Disponibilités</a></li>
                     <li><a href="#reservation" class="cta-button">Réserver</a></li>
                 </ul>
             </nav>
@@ -222,7 +221,6 @@
 
     <script>
         // --- Code pour le Carrousel ---
-        // Ce script est crucial pour l'effet de carrousel (glissement)
         const carouselContainer = document.querySelector('.carousel-container');
         const carouselTrack = document.querySelector('.carousel-track');
         const slides = document.querySelectorAll('.carousel-slide');
@@ -231,15 +229,16 @@
         let currentSlide = 0;
         const totalSlides = slides.length;
         
-        // Ajuste la largeur du track pour que les slides s'alignent
-        // Le CSS "min-width: 100%;" sur .carousel-slide est aussi vital
+        // VÉRIFICATION CRUCIALE : Le script doit s'assurer que la piste existe
         if(carouselTrack) {
+            // Ajuste la largeur du track pour que les slides s'alignent (Total slides * 100%)
             carouselTrack.style.width = `${totalSlides * 100}%`;
         }
         
         function updateSlide() {
             const offset = -currentSlide * (100 / totalSlides);
             if(carouselTrack) {
+                // Application de la transformation CSS qui fait glisser la piste
                 carouselTrack.style.transform = `translateX(${offset}%)`;
             }
         }
