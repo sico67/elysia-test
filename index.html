@@ -112,7 +112,7 @@
                 <p>Découvrez en images le cadre d'exception d'Elysia Nature & Spa.</p>
                 
                 <div class="carousel-container">
-                    <div class="carousel-track">
+                    <div class="carousel-track" id="elysia-track">
                         
                         <div class="carousel-slide gallery-item">
                             <img src="salon_terrasse.jpeg" alt="Espace salon avec vue sur la terrasse et les montagnes" class="carousel-img" loading="lazy">
@@ -135,10 +135,10 @@
                         </div>
                         
                     </div>
-                    <button class="carousel-nav prev">
+                    <button class="carousel-nav prev" id="prev-slide">
                         <span class="material-icons">chevron_left</span>
                     </button>
-                    <button class="carousel-nav next">
+                    <button class="carousel-nav next" id="next-slide">
                         <span class="material-icons">chevron_right</span>
                     </button>
                 </div>
@@ -146,8 +146,49 @@
                 <div class="gallery-indicators"></div>
                 
             </div>
+            <script>
+                // Déclaration des variables par ID pour une rapidité maximale
+                const carouselTrack = document.getElementById('elysia-track');
+                const slides = document.querySelectorAll('.carousel-slide');
+                const prevButton = document.getElementById('prev-slide');
+                const nextButton = document.getElementById('next-slide');
+                
+                // Si les éléments critiques ne sont pas trouvés, le script s'arrête
+                if (carouselTrack && slides.length > 0) {
+
+                    let currentSlide = 0;
+                    const totalSlides = slides.length;
+                    
+                    // 1. Définir la largeur totale de la piste (ex: 400% pour 4 slides)
+                    carouselTrack.style.width = `${totalSlides * 100}%`;
+                    
+                    function updateSlide() {
+                        const offset = -currentSlide * (100 / totalSlides);
+                        // 2. Appliquer la transformation CSS pour glisser
+                        carouselTrack.style.transform = `translateX(${offset}%)`;
+                    }
+                    
+                    // 3. Écouteurs d'événements pour les flèches
+                    if (nextButton) {
+                        nextButton.addEventListener('click', () => {
+                            currentSlide = (currentSlide + 1) % totalSlides;
+                            updateSlide();
+                        });
+                    }
+
+                    if (prevButton) {
+                        prevButton.addEventListener('click', () => {
+                            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                            updateSlide();
+                        });
+                    }
+
+                    // Initialiser la position (première slide)
+                    updateSlide();
+                }
+            </script>
         </section>
-        
+
         <section id="localisation" class="calendar-section">
             <div class="container">
                 <h2>Localisation & Accès</h2>
@@ -223,63 +264,29 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             
-            // --- Code pour le Carrousel ---
-            const carouselContainer = document.querySelector('.carousel-container');
-            const carouselTrack = document.querySelector('.carousel-track');
-            const slides = document.querySelectorAll('.carousel-slide');
-            const prevButton = document.querySelector('.carousel-nav.prev');
-            const nextButton = document.querySelector('.carousel-nav.next');
-            let currentSlide = 0;
-            const totalSlides = slides.length;
-            
-            // Si le carrousel n'existe pas, on arrête le script (sécurité)
-            if (!carouselTrack) return; 
-
-            // Ajuste la largeur du track pour que les slides s'alignent (Total slides * 100%)
-            carouselTrack.style.width = `${totalSlides * 100}%`;
-            
-            function updateSlide() {
-                const offset = -currentSlide * (100 / totalSlides);
-                // Application de la transformation CSS qui fait glisser la piste
-                carouselTrack.style.transform = `translateX(${offset}%)`;
-            }
-            
-            if (nextButton && prevButton) {
-                nextButton.addEventListener('click', () => {
-                    currentSlide = (currentSlide + 1) % totalSlides;
-                    updateSlide();
-                });
-
-                prevButton.addEventListener('click', () => {
-                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                    updateSlide();
-                });
-            }
-
-
-            // --- Code pour la Lightbox (Agrandissement des images du Carrousel) ---
+            // --- Lightbox ---
             const modal = document.getElementById("lightboxModal");
             const modalImg = document.getElementById("modalImage");
             const closeBtn = document.querySelector(".close-btn");
-            const galleryImages = document.querySelectorAll(".gallery-item img");
-
-            galleryImages.forEach(img => {
-                img.addEventListener("click", () => {
-                    modal.style.display = "block";
-                    modalImg.src = img.src;
-                    modalImg.alt = img.alt;
-                    document.body.style.overflow = "hidden";
-                });
-            });
-
-            if (closeBtn) {
-                closeBtn.addEventListener("click", () => {
-                    modal.style.display = "none";
-                    document.body.style.overflow = "auto";
-                });
-            }
-
+            const galleryImages = document.querySelectorAll(".gallery-item img"); // Cible les images du carrousel
+            
             if (modal) {
+                galleryImages.forEach(img => {
+                    img.addEventListener("click", () => {
+                        modal.style.display = "block";
+                        modalImg.src = img.src;
+                        modalImg.alt = img.alt;
+                        document.body.style.overflow = "hidden";
+                    });
+                });
+
+                if (closeBtn) {
+                    closeBtn.addEventListener("click", () => {
+                        modal.style.display = "none";
+                        document.body.style.overflow = "auto";
+                    });
+                }
+
                 modal.addEventListener("click", (e) => {
                     if (e.target === modal) {
                         modal.style.display = "none";
@@ -288,7 +295,7 @@
                 });
             }
 
-            // --- Code pour le Menu mobile ---
+            // --- Menu mobile ---
             const mobileToggle = document.querySelector(".mobile-menu-toggle");
             const navList = document.querySelector(".nav-list");
             
