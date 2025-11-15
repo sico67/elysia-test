@@ -139,9 +139,9 @@ a {
     padding-top: 60px; /* Pour éviter d'être sous le header */
 }
 
-/* NOUVEAU STYLE POUR L'IMAGE DE FOND */
+/* IMAGE DE FOND (CHEMIN CORRIGÉ VERS logo.jpeg) */
 .elysia-wall-bg {
-    background-image: url('img/elysia_bg.jpeg'); /* Assurez-vous d'avoir cette image dans img/ */
+    background-image: url('img/logo.jpeg'); 
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Effet parallax */
@@ -300,7 +300,7 @@ section {
     margin-bottom: 30px;
 }
 
-/* --- NOUVEAUX STYLES POUR LE CARROUSEL --- */
+/* --- STYLES POUR LE CARROUSEL --- */
 
 .carousel-container {
     width: 100%;
