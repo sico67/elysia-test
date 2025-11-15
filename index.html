@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
-    <link rel="stylesheet" href="main.css"> 
+    <link rel="stylesheet" href="main.css?v=2"> 
 </head>
 <body>
 
@@ -146,47 +146,7 @@
                 <div class="gallery-indicators"></div>
                 
             </div>
-            <script>
-                // Déclaration des variables par ID pour une rapidité maximale
-                const carouselTrack = document.getElementById('elysia-track');
-                const slides = document.querySelectorAll('.carousel-slide');
-                const prevButton = document.getElementById('prev-slide');
-                const nextButton = document.getElementById('next-slide');
-                
-                // Si les éléments critiques ne sont pas trouvés, le script s'arrête
-                if (carouselTrack && slides.length > 0) {
-
-                    let currentSlide = 0;
-                    const totalSlides = slides.length;
-                    
-                    // 1. Définir la largeur totale de la piste (ex: 400% pour 4 slides)
-                    carouselTrack.style.width = `${totalSlides * 100}%`;
-                    
-                    function updateSlide() {
-                        const offset = -currentSlide * (100 / totalSlides);
-                        // 2. Appliquer la transformation CSS pour glisser
-                        carouselTrack.style.transform = `translateX(${offset}%)`;
-                    }
-                    
-                    // 3. Écouteurs d'événements pour les flèches
-                    if (nextButton) {
-                        nextButton.addEventListener('click', () => {
-                            currentSlide = (currentSlide + 1) % totalSlides;
-                            updateSlide();
-                        });
-                    }
-
-                    if (prevButton) {
-                        prevButton.addEventListener('click', () => {
-                            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                            updateSlide();
-                        });
-                    }
-
-                    // Initialiser la position (première slide)
-                    updateSlide();
-                }
-            </script>
+            
         </section>
 
         <section id="localisation" class="calendar-section">
@@ -264,15 +224,54 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             
+            // --- Carrousel ---
+            const carouselTrack = document.getElementById('elysia-track');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const prevButton = document.getElementById('prev-slide');
+            const nextButton = document.getElementById('next-slide');
+
+            // Vérification de l'existence des éléments
+            if (carouselTrack && slides.length > 0) {
+                let currentSlide = 0;
+                const totalSlides = slides.length;
+                
+                // Le JS du carrousel est correct
+                carouselTrack.style.width = `${totalSlides * 100}%`;
+                
+                function updateSlide() {
+                    const offset = -currentSlide * (100 / totalSlides);
+                    carouselTrack.style.transform = `translateX(${offset}%)`;
+                }
+                
+                if (nextButton) {
+                    nextButton.addEventListener('click', () => {
+                        currentSlide = (currentSlide + 1) % totalSlides;
+                        updateSlide();
+                    });
+                }
+
+                if (prevButton) {
+                    prevButton.addEventListener('click', () => {
+                        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                        updateSlide();
+                    });
+                }
+
+                updateSlide();
+            }
+
+
             // --- Lightbox ---
             const modal = document.getElementById("lightboxModal");
             const modalImg = document.getElementById("modalImage");
             const closeBtn = document.querySelector(".close-btn");
-            const galleryImages = document.querySelectorAll(".gallery-item img"); // Cible les images du carrousel
+            // Cible les images du carrousel pour l'ouverture
+            const galleryImages = document.querySelectorAll(".carousel-slide .carousel-img"); 
             
             if (modal) {
                 galleryImages.forEach(img => {
-                    img.addEventListener("click", () => {
+                    img.addEventListener("click", (e) => {
+                        e.stopPropagation(); // EMPÊCHE un éventuel conflit avec le carrousel
                         modal.style.display = "block";
                         modalImg.src = img.src;
                         modalImg.alt = img.alt;
