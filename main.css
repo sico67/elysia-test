@@ -139,7 +139,7 @@ a {
     padding-top: 60px; /* Pour éviter d'être sous le header */
 }
 
-/* IMAGE DE FOND (CHEMIN CORRIGÉ VERS logo.jpeg) */
+/* IMAGE DE FOND (UTILISE logo.jpeg - DOIT ÊTRE DANS img/logo.jpeg) */
 .elysia-wall-bg {
     background-image: url('img/logo.jpeg'); 
     background-size: cover;
